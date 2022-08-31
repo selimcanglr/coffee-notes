@@ -1,13 +1,21 @@
-import { FormControl, FormHelperText, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormHelperText, FormLabel, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 
-const LabeledInput = ( { isRequired=false, label, type='text', helperText, placeholder } ) => {
+const LabeledInput = ( { isRequired=false, type='text', label, helperText, placeholder, inputRightElementChild, state, setState } ) => {
     return (
-    <FormControl isRequired={isRequired}>
-        <FormLabel>{label}</FormLabel>
-        <Input type={type} placeholder={placeholder}/>
-        {helperText && <FormHelperText>{helperText}</FormHelperText>  }
-        
-    </FormControl>
+        <FormControl isRequired={isRequired}>
+            <FormLabel>{label}</FormLabel>
+            <InputGroup>
+                <Input 
+                    type={type} 
+                    placeholder={placeholder} 
+                    pr={inputRightElementChild ? '4rem' : ''}
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                />
+                {helperText && <FormHelperText>{helperText}</FormHelperText>  }
+                {inputRightElementChild && <InputRightElement w='4rem'>{inputRightElementChild}</InputRightElement>}
+            </InputGroup>
+        </FormControl>
     );
 }
  

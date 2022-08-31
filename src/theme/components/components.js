@@ -39,7 +39,7 @@ const Link = {
 const components = {
     Button,
     Link,
-    Heading
+    Heading,
 }
 
 export default components
