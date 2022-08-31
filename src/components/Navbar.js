@@ -20,7 +20,6 @@ const Navbar = () => {
                     <Button variant='coffeePrimary'>Log In</Button>
                 </Link>
             </ButtonGroup>
-
         </Flex>
     );
 }

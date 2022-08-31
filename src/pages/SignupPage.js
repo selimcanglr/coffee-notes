@@ -1,7 +1,7 @@
 import { ArrowBackIcon } from '@chakra-ui/icons';
 import {
     Box, Button, Center, Flex, FormControl,
-    FormHelperText, FormLabel, Heading, HStack, Input,
+    FormHelperText, FormLabel, Heading, Input,
     Link,
     Spacer
 } from "@chakra-ui/react";
