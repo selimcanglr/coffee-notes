@@ -32,8 +32,23 @@ const Heading = {
 
 const Link = {
     baseStyle: (props) =>  ({
-        color: mode('coffee.500', 'coffee.300')(props),  
-    })
+        color: mode('coffee.600', 'coffee.300')(props),  
+    }),
+    variants: {
+        navLink: (props) => ({
+            color: mode('coffee.500', 'coffee.200')(props),
+
+            _hover: {
+                textDecoration: 'none',
+                color: mode('coffee.400', 'coffee.50')(props)
+            },
+
+            _activeLink: {
+                fontWeight: 'bold',
+                color: mode('coffee.500', 'coffee.300')(props),
+            }
+        }),
+    }
 }
 
 const components = {

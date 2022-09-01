@@ -7,22 +7,9 @@ import { useState } from "react";
 const beanTypes = ['Arabica', 'Robusta']
 const roastTypes = ['Light', 'Medium', 'Dark']
 
-const defaultReview = {
-    title: '',
-    beanType: '',
-    roastType: '',
-    coffeeWeight: '',
-    tastingNotes: [],
-    origin: '',
-    groundLevel: 18,
-    brewMethod: '',
-    rating: 3,
-}
-
-const CoffeeTastingForm = () => {
-    const [review, setReview] = useState(defaultReview)
+const CoffeeTastingForm = ({ review, setReview, state }) => {
     const [currentNote, setCurrentNote] = useState('')
-    const [showSliderTooltip, setShowSliderTooltip] = useState(0)
+    const [activeSliderTooptip, setActiveSliderTooltip] = useState(0)
 
     const beanRadioOptions = beanTypes.map((option, index) => {
         return (
@@ -124,12 +111,15 @@ const CoffeeTastingForm = () => {
                         placeholder='My notes on brewing V60' 
                         value={review.title}
                         onChange={(e) => setTitle(e.target.value)}
+                        errorBorderColor='crimson'
+                        isInvalid={state === 'invalid' && !review.title}
                     />
                 </InputGroup>
             </FormControl>
             <FormControl isRequired={true} as='fieldset'>
                 <FormLabel as='legend'>Bean type</FormLabel>
                 <RadioGroup 
+                    name='bean-type-radio'
                     value={review.beanType} 
                     onChange={setBeanType}
                 >
@@ -183,8 +173,8 @@ const CoffeeTastingForm = () => {
                         max={36}
                         colorScheme='coffee'
                         onChange={setGroundLevel}
-                        onMouseEnter={() => setShowSliderTooltip(0)}
-                        onMouseLeave={() => setShowSliderTooltip(-1)}
+                        onMouseEnter={() => setActiveSliderTooltip(0)}
+                        onMouseLeave={() => setActiveSliderTooltip(-1)}
                     >
                     <SliderMark value={3} mt='2' ml='-2.5' fontSize='sm'>
                         Fine
@@ -200,7 +190,7 @@ const CoffeeTastingForm = () => {
                         bg='coffee.500'
                         color='white'
                         placement='top'
-                        isOpen={showSliderTooltip === 0}
+                        isOpen={activeSliderTooptip === 0}
                         label={`${review.groundLevel}`}
                     >
                         <SliderThumb />
@@ -247,8 +237,8 @@ const CoffeeTastingForm = () => {
                     max={5}
                     colorScheme='coffee'
                     onChange={setRating}
-                    onMouseEnter={() => setShowSliderTooltip(1)}
-                    onMouseLeave={() => setShowSliderTooltip(-1)}
+                    onMouseEnter={() => setActiveSliderTooltip(1)}
+                    onMouseLeave={() => setActiveSliderTooltip(-1)}
                 >
                     <SliderMark value={0} mt='2' ml='-1' fontSize='sm'>
                         0
@@ -276,7 +266,7 @@ const CoffeeTastingForm = () => {
                         bg='coffee.500'
                         color='white'
                         placement='top'
-                        isOpen={showSliderTooltip === 1}
+                        isOpen={activeSliderTooptip === 1}
                         label={`${review.rating}`}
                     >
                         <SliderThumb />

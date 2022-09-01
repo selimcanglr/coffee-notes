@@ -14,7 +14,7 @@ const coffee = {
 const colors  = {
     coffee,
     primaryFontColor: {
-        lightMode: coffee['600'],
+        lightMode: coffee['700'],
         darkMode: coffee['50']
     },
 }

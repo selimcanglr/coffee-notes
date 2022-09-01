@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
+import NavbarLanding from "../components/NavbarLanding";
 
 const HomePage = () => {
     return (
         <>
-            <Navbar/>
+            <NavbarLanding/>
         </>
     );
 }
